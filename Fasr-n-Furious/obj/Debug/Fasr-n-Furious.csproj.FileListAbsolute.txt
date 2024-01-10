@@ -1,0 +1,10 @@
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\bin\Debug\Fasr-n-Furious.exe.config
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\bin\Debug\Fasr-n-Furious.exe
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\bin\Debug\Fasr-n-Furious.pdb
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.csproj.AssemblyReference.cache
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr_n_Furious.GameForm.resources
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr_n_Furious.Properties.Resources.resources
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.csproj.GenerateResource.cache
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.csproj.CoreCompileInputs.cache
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.exe
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.pdb
