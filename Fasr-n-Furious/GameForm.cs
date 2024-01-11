@@ -28,23 +28,27 @@ namespace Fasr_n_Furious
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            
+            //map and enemy cars movement speed
             MapPictureBox.Top += mapSpeed;
             MapPictureBox2.Top += mapSpeed;
             EnemyPictureBox.Top += mapSpeed;
             EnemyPictureBox2.Top += mapSpeed;
 
+            //points
             points += mapSpeed;
             Points.Text = Convert.ToString(points);
 
-            if (mapSpeed < 20) mapSpeed ++;
+            //acceleration at the beginning
+            if (mapSpeed < 15) mapSpeed ++;
 
+            //map movement
             if (MapPictureBox.Top >= mapHeight)
             {
                 MapPictureBox.Top = 0;
                 MapPictureBox2.Top = -mapHeight;
             }
 
+            //setting enemy location randomly 
             if (EnemyPictureBox.Top >= mapHeight)
             {
                 EnemyPictureBox.Top = enemy1TopLocation;
@@ -56,19 +60,20 @@ namespace Fasr_n_Furious
                 EnemyPictureBox2.Left = rand.Next(300, 560);
             }
 
+            //stopping the game when lose
             if (CarPictureBox.Bounds.IntersectsWith(EnemyPictureBox.Bounds) || CarPictureBox.Bounds.IntersectsWith(EnemyPictureBox2.Bounds))
             {
                 timer.Stop();
                 LosePanel.Visible = true;
-                CurrentPointsLabel.Text = Convert.ToString(points);
+                CurrentPointsLabel.Text = Convert.ToString(points);   
             }
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
-            int carSpeed = 20;
+            int carSpeed = 25;
 
-            //Car controls
+            //car controls
             if (!isPaused)
             {
                 if ((e.KeyCode == Keys.Left || e.KeyCode == Keys.A) && CarPictureBox.Left >= 150)
@@ -89,31 +94,48 @@ namespace Fasr_n_Furious
                 }
             }
 
-            //Handle game
+            //keys for close, pause, resume
             if (e.KeyCode == Keys.P)
             {
                 timer.Stop();
                 isPaused = true;
             }
-            else if (e.KeyCode == Keys.R)
+            else if (e.KeyCode == Keys.R && !(CarPictureBox.Bounds.IntersectsWith(EnemyPictureBox.Bounds) || CarPictureBox.Bounds.IntersectsWith(EnemyPictureBox2.Bounds)))
             {
                 timer.Start();
                 isPaused = false;
             }
             else if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                Hide();
+                StartForm startForm = new StartForm();
+                startForm.Show();
             }
         }
 
+        //restart game
         private void RestartButton_Click(object sender, EventArgs e)
         {
             EnemyPictureBox.Top = enemy1TopLocation;
             EnemyPictureBox2.Top = enemy2TopLocation;
+            CarPictureBox.Top = mapHeight - CarPictureBox.Height;
+            CarPictureBox.Left = MapPictureBox.Width / 2;
             points = 0;
             mapSpeed = 5;
             LosePanel.Visible = false;
             timer.Start();
+        }
+
+        private void HomeButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            StartForm startForm = new StartForm();
+            startForm.Show();
+        }
+
+        private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

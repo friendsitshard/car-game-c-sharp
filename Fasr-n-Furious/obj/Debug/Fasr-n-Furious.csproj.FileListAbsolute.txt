@@ -8,3 +8,4 @@ C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furiou
 C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.csproj.CoreCompileInputs.cache
 C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.exe
 C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.pdb
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr_n_Furious.StartForm.resources

@@ -37,15 +37,15 @@
             this.MapPictureBox2 = new System.Windows.Forms.PictureBox();
             this.EnemyPictureBox2 = new System.Windows.Forms.PictureBox();
             this.LosePanel = new System.Windows.Forms.Panel();
-            this.LoseLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.RestartButton = new System.Windows.Forms.Button();
+            this.CurrentPointsLabel = new System.Windows.Forms.Label();
             this.HomeButton = new System.Windows.Forms.Button();
+            this.RestartButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.LoseLabel = new System.Windows.Forms.Label();
             this.PointsLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Points = new System.Windows.Forms.Label();
-            this.CurrentPointsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.EnemyPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MapPictureBox)).BeginInit();
@@ -126,35 +126,25 @@
             this.LosePanel.TabIndex = 5;
             this.LosePanel.Visible = false;
             // 
-            // LoseLabel
+            // CurrentPointsLabel
             // 
-            this.LoseLabel.AutoSize = true;
-            this.LoseLabel.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoseLabel.Location = new System.Drawing.Point(88, 32);
-            this.LoseLabel.Name = "LoseLabel";
-            this.LoseLabel.Size = new System.Drawing.Size(117, 29);
-            this.LoseLabel.TabIndex = 0;
-            this.LoseLabel.Text = "You Lose!";
+            this.CurrentPointsLabel.AutoSize = true;
+            this.CurrentPointsLabel.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold);
+            this.CurrentPointsLabel.Location = new System.Drawing.Point(170, 77);
+            this.CurrentPointsLabel.Name = "CurrentPointsLabel";
+            this.CurrentPointsLabel.Size = new System.Drawing.Size(27, 29);
+            this.CurrentPointsLabel.TabIndex = 5;
+            this.CurrentPointsLabel.Text = "0";
             // 
-            // label1
+            // HomeButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(30, 76);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Your score:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(32, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 29);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Highscore:";
+            this.HomeButton.Location = new System.Drawing.Point(109, 195);
+            this.HomeButton.Name = "HomeButton";
+            this.HomeButton.Size = new System.Drawing.Size(75, 23);
+            this.HomeButton.TabIndex = 4;
+            this.HomeButton.Text = "Home";
+            this.HomeButton.UseVisualStyleBackColor = true;
+            this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
             // 
             // RestartButton
             // 
@@ -166,14 +156,35 @@
             this.RestartButton.UseVisualStyleBackColor = true;
             this.RestartButton.Click += new System.EventHandler(this.RestartButton_Click);
             // 
-            // HomeButton
+            // label2
             // 
-            this.HomeButton.Location = new System.Drawing.Point(109, 195);
-            this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(75, 23);
-            this.HomeButton.TabIndex = 4;
-            this.HomeButton.Text = "Home";
-            this.HomeButton.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(32, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 29);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Highscore:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(30, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Your score:";
+            // 
+            // LoseLabel
+            // 
+            this.LoseLabel.AutoSize = true;
+            this.LoseLabel.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoseLabel.Location = new System.Drawing.Point(88, 32);
+            this.LoseLabel.Name = "LoseLabel";
+            this.LoseLabel.Size = new System.Drawing.Size(117, 29);
+            this.LoseLabel.TabIndex = 0;
+            this.LoseLabel.Text = "You Lose!";
             // 
             // PointsLabel
             // 
@@ -208,16 +219,6 @@
             this.Points.TabIndex = 7;
             this.Points.Text = "0";
             // 
-            // CurrentPointsLabel
-            // 
-            this.CurrentPointsLabel.AutoSize = true;
-            this.CurrentPointsLabel.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold);
-            this.CurrentPointsLabel.Location = new System.Drawing.Point(170, 77);
-            this.CurrentPointsLabel.Name = "CurrentPointsLabel";
-            this.CurrentPointsLabel.Size = new System.Drawing.Size(27, 29);
-            this.CurrentPointsLabel.TabIndex = 5;
-            this.CurrentPointsLabel.Text = "0";
-            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,6 +236,7 @@
             this.Name = "GameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fast and Furious";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameForm_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.EnemyPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarPictureBox)).EndInit();
