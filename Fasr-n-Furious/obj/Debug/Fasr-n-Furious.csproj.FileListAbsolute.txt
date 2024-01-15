@@ -9,3 +9,13 @@ C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furiou
 C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.exe
 C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.pdb
 C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr_n_Furious.StartForm.resources
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr_n_Furious.LoginForm.resources
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr_n_Furious.RegisterForm.resources
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr_n_Furious.AdminForm.resources
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr_n_Furious.LeaderForm.resources
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr_n_Furious.UserInfoForm.resources
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\bin\Debug\EntityFramework.dll
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\bin\Debug\EntityFramework.xml
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USER\source\repos\Fasr-n-Furious\Fasr-n-Furious\obj\Debug\Fasr-n-Furious.csproj.CopyComplete

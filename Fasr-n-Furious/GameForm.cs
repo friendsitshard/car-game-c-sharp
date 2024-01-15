@@ -14,7 +14,7 @@ namespace Fasr_n_Furious
     {
         Random rand = new Random();
         private bool isPaused = false;
-        private int mapSpeed = 5;
+        private int mapSpeed = 0;
         private int mapHeight = 650;
         private int points = 0;
         private int enemy1TopLocation = -150;
@@ -39,7 +39,7 @@ namespace Fasr_n_Furious
             Points.Text = Convert.ToString(points);
 
             //acceleration at the beginning
-            if (mapSpeed < 15) mapSpeed ++;
+            if (mapSpeed < 17) mapSpeed ++;
 
             //map movement
             if (MapPictureBox.Top >= mapHeight)
