@@ -104,6 +104,7 @@
             this.CreateButton.TabIndex = 28;
             this.CreateButton.Text = "Create account";
             this.CreateButton.UseVisualStyleBackColor = false;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // passwordLabel
             // 
@@ -154,7 +155,7 @@
             this.RepasswordPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.RepasswordPictureBox.TabIndex = 34;
             this.RepasswordPictureBox.TabStop = false;
-            this.RepasswordPictureBox.Click += new System.EventHandler(this.PasswordPictureBox_Click);
+            this.RepasswordPictureBox.Click += new System.EventHandler(this.RepasswordPictureBox_Click);
             // 
             // EmailPictureBox
             // 

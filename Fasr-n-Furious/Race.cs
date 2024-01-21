@@ -15,8 +15,7 @@ namespace Fasr_n_Furious
     public partial class Race
     {
         public int race_id { get; set; }
-        public System.DateTime start_time { get; set; }
-        public System.DateTime finish_time { get; set; }
+        public System.TimeSpan duration { get; set; }
         public int points { get; set; }
         public int user_id { get; set; }
     

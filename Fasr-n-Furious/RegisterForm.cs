@@ -29,6 +29,7 @@ namespace Fasr_n_Furious
             startForm.Show();
         }
 
+        #region unhide password
         private void PasswordPictureBox_Click(object sender, EventArgs e)
         {
             if (PasswordTextBox.PasswordChar == '*')
@@ -40,5 +41,54 @@ namespace Fasr_n_Furious
                 PasswordTextBox.PasswordChar = '*';
             }
         }
+        private void RepasswordPictureBox_Click(object sender, EventArgs e)
+        {
+            if (RepasswordTextBox.PasswordChar == '*')
+            {
+                RepasswordTextBox.PasswordChar = '\0';
+            }
+            else
+            {
+                RepasswordTextBox.PasswordChar = '*';
+            }
+        }
+        #endregion
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+            using (CarsEntities cars = new CarsEntities())
+            {
+                string username = UsernameTextBox.Text;
+                string email = EmailTextBox.Text;
+                string password = PasswordTextBox.Text;
+                int role_id = 2;
+
+                if (string.IsNullOrEmpty(UsernameTextBox.Text))
+                {
+                    MessageBox.Show("Username is required", "Empty field", MessageBoxButtons.OK);
+                }
+                else if (string.IsNullOrEmpty(EmailTextBox.Text))
+                {
+                    MessageBox.Show("Email is required", "Empty field", MessageBoxButtons.OK);
+                }
+                else if (string.IsNullOrEmpty(PasswordTextBox.Text))
+                {
+                    MessageBox.Show("Password is required", "Empty field", MessageBoxButtons.OK);
+                }
+                else if (PasswordTextBox.Text != RepasswordTextBox.Text)
+                {
+                    MessageBox.Show("Password don't match", "Empty field", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    cars.insert_users(username, email, password, role_id);
+                    cars.SaveChanges();
+                    Hide();
+                    StartForm startForm = new StartForm();
+                    startForm.Show();
+                }
+            }
+        }
+
     }
 }

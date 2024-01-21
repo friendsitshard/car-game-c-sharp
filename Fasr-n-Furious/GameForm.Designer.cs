@@ -37,8 +37,8 @@
             this.MapPictureBox2 = new System.Windows.Forms.PictureBox();
             this.EnemyPictureBox2 = new System.Windows.Forms.PictureBox();
             this.LosePanel = new System.Windows.Forms.Panel();
+            this.HighscoreLabel = new System.Windows.Forms.Label();
             this.CurrentPointsLabel = new System.Windows.Forms.Label();
-            this.HomeButton = new System.Windows.Forms.Button();
             this.RestartButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,6 +46,10 @@
             this.PointsLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Points = new System.Windows.Forms.Label();
+            this.PlayerPanel = new System.Windows.Forms.Panel();
+            this.LogoutLabel = new System.Windows.Forms.Label();
+            this.UsernameLabel = new System.Windows.Forms.Label();
+            this.HomeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.EnemyPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MapPictureBox)).BeginInit();
@@ -53,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.EnemyPictureBox2)).BeginInit();
             this.LosePanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.PlayerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer
@@ -114,17 +119,28 @@
             // 
             this.LosePanel.BackColor = System.Drawing.Color.White;
             this.LosePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LosePanel.Controls.Add(this.CurrentPointsLabel);
             this.LosePanel.Controls.Add(this.HomeButton);
+            this.LosePanel.Controls.Add(this.HighscoreLabel);
+            this.LosePanel.Controls.Add(this.CurrentPointsLabel);
             this.LosePanel.Controls.Add(this.RestartButton);
             this.LosePanel.Controls.Add(this.label2);
             this.LosePanel.Controls.Add(this.label1);
             this.LosePanel.Controls.Add(this.LoseLabel);
             this.LosePanel.Location = new System.Drawing.Point(270, 166);
             this.LosePanel.Name = "LosePanel";
-            this.LosePanel.Size = new System.Drawing.Size(304, 242);
+            this.LosePanel.Size = new System.Drawing.Size(304, 235);
             this.LosePanel.TabIndex = 5;
             this.LosePanel.Visible = false;
+            // 
+            // HighscoreLabel
+            // 
+            this.HighscoreLabel.AutoSize = true;
+            this.HighscoreLabel.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold);
+            this.HighscoreLabel.Location = new System.Drawing.Point(170, 118);
+            this.HighscoreLabel.Name = "HighscoreLabel";
+            this.HighscoreLabel.Size = new System.Drawing.Size(27, 29);
+            this.HighscoreLabel.TabIndex = 6;
+            this.HighscoreLabel.Text = "0";
             // 
             // CurrentPointsLabel
             // 
@@ -135,16 +151,6 @@
             this.CurrentPointsLabel.Size = new System.Drawing.Size(27, 29);
             this.CurrentPointsLabel.TabIndex = 5;
             this.CurrentPointsLabel.Text = "0";
-            // 
-            // HomeButton
-            // 
-            this.HomeButton.Location = new System.Drawing.Point(109, 195);
-            this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(75, 23);
-            this.HomeButton.TabIndex = 4;
-            this.HomeButton.Text = "Home";
-            this.HomeButton.UseVisualStyleBackColor = true;
-            this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
             // 
             // RestartButton
             // 
@@ -203,7 +209,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.Points);
             this.panel1.Controls.Add(this.PointsLabel);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(681, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(159, 33);
             this.panel1.TabIndex = 6;
@@ -219,12 +225,58 @@
             this.Points.TabIndex = 7;
             this.Points.Text = "0";
             // 
+            // PlayerPanel
+            // 
+            this.PlayerPanel.BackColor = System.Drawing.Color.Orange;
+            this.PlayerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PlayerPanel.Controls.Add(this.LogoutLabel);
+            this.PlayerPanel.Controls.Add(this.UsernameLabel);
+            this.PlayerPanel.Location = new System.Drawing.Point(0, 0);
+            this.PlayerPanel.Name = "PlayerPanel";
+            this.PlayerPanel.Size = new System.Drawing.Size(131, 62);
+            this.PlayerPanel.TabIndex = 7;
+            // 
+            // LogoutLabel
+            // 
+            this.LogoutLabel.AutoSize = true;
+            this.LogoutLabel.BackColor = System.Drawing.Color.Transparent;
+            this.LogoutLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LogoutLabel.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoutLabel.Location = new System.Drawing.Point(3, 37);
+            this.LogoutLabel.Name = "LogoutLabel";
+            this.LogoutLabel.Size = new System.Drawing.Size(64, 18);
+            this.LogoutLabel.TabIndex = 7;
+            this.LogoutLabel.Text = "Log Out";
+            this.LogoutLabel.Click += new System.EventHandler(this.Logout_Click);
+            // 
+            // UsernameLabel
+            // 
+            this.UsernameLabel.AutoSize = true;
+            this.UsernameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.UsernameLabel.Font = new System.Drawing.Font("Montserrat", 13F, System.Drawing.FontStyle.Bold);
+            this.UsernameLabel.Location = new System.Drawing.Point(1, 7);
+            this.UsernameLabel.Name = "UsernameLabel";
+            this.UsernameLabel.Size = new System.Drawing.Size(71, 25);
+            this.UsernameLabel.TabIndex = 6;
+            this.UsernameLabel.Text = "Player";
+            // 
+            // HomeButton
+            // 
+            this.HomeButton.Location = new System.Drawing.Point(109, 190);
+            this.HomeButton.Name = "HomeButton";
+            this.HomeButton.Size = new System.Drawing.Size(75, 23);
+            this.HomeButton.TabIndex = 7;
+            this.HomeButton.Text = "Home";
+            this.HomeButton.UseVisualStyleBackColor = true;
+            this.HomeButton.Click += new System.EventHandler(this.Logout_Click);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(840, 650);
+            this.Controls.Add(this.PlayerPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LosePanel);
             this.Controls.Add(this.EnemyPictureBox2);
@@ -237,6 +289,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fast and Furious";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameForm_FormClosing);
+            this.Load += new System.EventHandler(this.GameForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.EnemyPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarPictureBox)).EndInit();
@@ -247,6 +300,8 @@
             this.LosePanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.PlayerPanel.ResumeLayout(false);
+            this.PlayerPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -264,11 +319,15 @@
         private System.Windows.Forms.Button RestartButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button HomeButton;
         private System.Windows.Forms.Label PointsLabel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Points;
         private System.Windows.Forms.Label CurrentPointsLabel;
+        private System.Windows.Forms.Label HighscoreLabel;
+        private System.Windows.Forms.Panel PlayerPanel;
+        private System.Windows.Forms.Label UsernameLabel;
+        private System.Windows.Forms.Label LogoutLabel;
+        private System.Windows.Forms.Button HomeButton;
     }
 }
 

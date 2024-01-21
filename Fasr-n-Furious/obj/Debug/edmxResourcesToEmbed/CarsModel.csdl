@@ -5,8 +5,7 @@
       <PropertyRef Name="race_id" />
     </Key>
     <Property Name="race_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="start_time" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="finish_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="duration" Type="Time" Nullable="false" Precision="2" />
     <Property Name="points" Type="Int32" Nullable="false" />
     <Property Name="user_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="User" Relationship="Self.FK_Races_Users" FromRole="Races" ToRole="Users" />
@@ -19,26 +18,17 @@
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="UserInfo">
     <Key>
-      <PropertyRef Name="user_id" />
+      <PropertyRef Name="info_id" />
     </Key>
-    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="info_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="age" Type="Int32" />
     <Property Name="sex" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
     <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="User" Relationship="Self.FK_UserInfos_Users" FromRole="UserInfos" ToRole="Users" />
   </EntityType>
   <EntityType Name="User">
@@ -88,14 +78,13 @@
         <PropertyRef Name="user_id" />
       </Principal>
       <Dependent Role="UserInfos">
-        <PropertyRef Name="user_id" />
+        <PropertyRef Name="info_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="CarsEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Races" EntityType="Self.Race" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="UserInfos" EntityType="Self.UserInfo" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <AssociationSet Name="FK_Races_Users" Association="Self.FK_Races_Users">
@@ -120,57 +109,17 @@
       <Parameter Name="role_id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="show_players_top_scores" ReturnType="Collection(CarsModel.show_players_top_scores_Result)" />
-    <FunctionImport Name="sp_alterdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_creatediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_dropdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CarsModel.sp_helpdiagramdefinition_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CarsModel.sp_helpdiagrams_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_renamediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="new_diagramname" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_upgraddiagrams" />
     <FunctionImport Name="update_users">
       <Parameter Name="user_id" Mode="In" Type="Int32" />
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="email" Mode="In" Type="String" />
       <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="verified" Mode="In" Type="Boolean" />
       <Parameter Name="role_id" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="show_players_top_scores_Result">
     <Property Type="String" Name="username" Nullable="false" MaxLength="250" />
     <Property Type="Int32" Name="points" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagramdefinition_Result">
-    <Property Type="Int32" Name="version" Nullable="true" />
-    <Property Type="Binary" Name="definition" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagrams_Result">
-    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
 </Schema>

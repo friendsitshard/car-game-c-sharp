@@ -14,12 +14,13 @@ namespace Fasr_n_Furious
     
     public partial class UserInfo
     {
-        public int user_id { get; set; }
+        public int info_id { get; set; }
         public string name { get; set; }
         public string lastname { get; set; }
         public Nullable<int> age { get; set; }
         public string sex { get; set; }
         public string country { get; set; }
+        public int user_id { get; set; }
     
         public virtual User User { get; set; }
     }

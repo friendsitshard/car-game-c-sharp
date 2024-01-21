@@ -12,6 +12,8 @@ namespace Fasr_n_Furious
 {
     public partial class GameForm : Form
     {
+        private int id = 0;
+        private DateTime startTime = DateTime.Now;
         Random rand = new Random();
         private bool isPaused = false;
         private int mapSpeed = 0;
@@ -24,6 +26,31 @@ namespace Fasr_n_Furious
         {
             InitializeComponent();
             KeyPreview = true;
+        }
+        public GameForm(int id)
+        {
+            InitializeComponent();
+            KeyPreview = true;
+            this.id = id;
+        }
+        private void GameForm_Load(object sender, EventArgs e)
+        {
+            using (CarsEntities cars = new CarsEntities())
+            {
+                if (id != 0)
+                {
+                    var username = (from u in cars.Users
+                                    where u.user_id == id
+                                    select u.username).FirstOrDefault();
+                    UsernameLabel.Text = username;
+
+                }
+                else
+                {
+                    PlayerPanel.Visible = false;
+                }
+
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -39,7 +66,7 @@ namespace Fasr_n_Furious
             Points.Text = Convert.ToString(points);
 
             //acceleration at the beginning
-            if (mapSpeed < 17) mapSpeed ++;
+            if (mapSpeed < 17) mapSpeed++;
 
             //map movement
             if (MapPictureBox.Top >= mapHeight)
@@ -65,7 +92,35 @@ namespace Fasr_n_Furious
             {
                 timer.Stop();
                 LosePanel.Visible = true;
-                CurrentPointsLabel.Text = Convert.ToString(points);   
+                CurrentPointsLabel.Text = Convert.ToString(points);
+                using (CarsEntities cars = new CarsEntities())
+                {
+                    bool raceExists = cars.Races.Any(race => race.user_id == id);
+
+                    if (raceExists)
+                    {
+                        var highscore = (from r in cars.Races
+                                         where r.user_id == id
+                                         select r.points).Max();
+                        HighscoreLabel.Text = Convert.ToString(highscore);
+                    }
+                    else
+                    {
+                        HighscoreLabel.Text = "0";
+                    }
+                    if (id != 0)
+                    {
+                        TimeSpan duration = DateTime.Now - startTime;
+                        Race race = new Race
+                        {
+                            duration = duration,
+                            points = points,
+                            user_id = id
+                        };
+                        cars.Races.Add(race);
+                        cars.SaveChanges();
+                    }
+                }
             }
         }
 
@@ -126,7 +181,7 @@ namespace Fasr_n_Furious
             timer.Start();
         }
 
-        private void HomeButton_Click(object sender, EventArgs e)
+        private void Logout_Click(object sender, EventArgs e)
         {
             Hide();
             StartForm startForm = new StartForm();
@@ -137,5 +192,6 @@ namespace Fasr_n_Furious
         {
             Application.Exit();
         }
+
     }
 }
