@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Fasr_n_Furious
     public partial class AdminForm : Form
     {
         private readonly int id;
+        private string searchText;
         public AdminForm(int id)
         {
             InitializeComponent();
@@ -43,6 +45,7 @@ namespace Fasr_n_Furious
 
         private void TableComboBox_TextChanged(object sender, EventArgs e)
         {
+            SearchTextBox.Text = "";
             using (CarsEntities cars = new CarsEntities())
             {
                 var con = cars.Database.Connection;
@@ -107,6 +110,9 @@ namespace Fasr_n_Furious
 
                     if (table == "Users")
                     {
+                        
+                        
+
                         UserPanel.Visible = true;
 
                         if (action == "insert")
@@ -795,11 +801,67 @@ namespace Fasr_n_Furious
                 });
             }
         }
+        private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
         private void LogoutLabel_Click(object sender, EventArgs e)
         {
             Hide();
             StartForm startForm = new StartForm();
             startForm.Show();
+        }
+
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            searchText = SearchTextBox.Text;
+            string table = TableComboBox.Text;
+            using (CarsEntities cars = new CarsEntities())
+            {
+                var con = cars.Database.Connection;
+                con.Open();
+
+                if (table == "Users")
+                {
+                    string query = $"SELECT * FROM Users WHERE username like '%{searchText}%' OR email like '%{searchText}%' OR password like '%{searchText}%'";
+                    SqlCommand cmd = new SqlCommand(query, (SqlConnection)con);
+                    cmd.ExecuteNonQuery();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dataGridView1.DataSource = dt;
+                }
+                else if (table=="Roles")
+                {
+                    string query = $"SELECT * FROM Roles WHERE name like '%{searchText}%'";
+                    SqlCommand cmd = new SqlCommand(query, (SqlConnection)con);
+                    cmd.ExecuteNonQuery();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dataGridView1.DataSource = dt;
+                }
+                else if (table == "UserInfos")
+                {
+                    string query = $"SELECT * FROM UserInfos WHERE name like '%{searchText}%' OR lastname like '%{searchText}%' " +
+                        $"OR age like '%{searchText}%' OR country like '%{searchText}%'";
+                    SqlCommand cmd = new SqlCommand(query, (SqlConnection)con);
+                    cmd.ExecuteNonQuery();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dataGridView1.DataSource = dt;
+                }
+
+
+            }
         }
     }
 }

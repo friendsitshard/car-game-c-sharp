@@ -69,6 +69,13 @@
             this.RoleNameTextBox = new System.Windows.Forms.TextBox();
             this.RoleIdTextBox = new System.Windows.Forms.TextBox();
             this.InfoPanel = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.LastnameTextBox = new System.Windows.Forms.TextBox();
+            this.InfoNameTextBox = new System.Windows.Forms.TextBox();
+            this.InfoIdTextBox = new System.Windows.Forms.TextBox();
             this.RacePanel = new System.Windows.Forms.Panel();
             this.RaceDeleteButton = new System.Windows.Forms.Button();
             this.RaceUpdateButton = new System.Windows.Forms.Button();
@@ -81,14 +88,9 @@
             this.DurationTextBox = new System.Windows.Forms.TextBox();
             this.RaceUserIdTextBox = new System.Windows.Forms.TextBox();
             this.RaceIdTextBox = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.LastnameTextBox = new System.Windows.Forms.TextBox();
-            this.InfoNameTextBox = new System.Windows.Forms.TextBox();
-            this.InfoIdTextBox = new System.Windows.Forms.TextBox();
             this.LogoutLabel = new System.Windows.Forms.Label();
+            this.SearchTextBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.UserPanel.SuspendLayout();
             this.RolePanel.SuspendLayout();
@@ -523,6 +525,63 @@
             this.InfoPanel.TabIndex = 16;
             this.InfoPanel.Visible = false;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(114, 134);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(26, 13);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Age";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(100, 90);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 13);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Lastname";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(107, 48);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(35, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "Name";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(106, 6);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(43, 13);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "User ID";
+            // 
+            // LastnameTextBox
+            // 
+            this.LastnameTextBox.Location = new System.Drawing.Point(79, 106);
+            this.LastnameTextBox.Name = "LastnameTextBox";
+            this.LastnameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.LastnameTextBox.TabIndex = 3;
+            // 
+            // InfoNameTextBox
+            // 
+            this.InfoNameTextBox.Location = new System.Drawing.Point(79, 64);
+            this.InfoNameTextBox.Name = "InfoNameTextBox";
+            this.InfoNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.InfoNameTextBox.TabIndex = 1;
+            // 
+            // InfoIdTextBox
+            // 
+            this.InfoIdTextBox.Location = new System.Drawing.Point(79, 22);
+            this.InfoIdTextBox.Name = "InfoIdTextBox";
+            this.InfoIdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.InfoIdTextBox.TabIndex = 0;
+            // 
             // RacePanel
             // 
             this.RacePanel.BackColor = System.Drawing.Color.Transparent;
@@ -637,63 +696,6 @@
             this.RaceIdTextBox.Size = new System.Drawing.Size(100, 20);
             this.RaceIdTextBox.TabIndex = 0;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(114, 134);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(26, 13);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "Age";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(100, 90);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 13);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "Lastname";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(107, 48);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 13);
-            this.label16.TabIndex = 7;
-            this.label16.Text = "Name";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(106, 6);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(43, 13);
-            this.label17.TabIndex = 6;
-            this.label17.Text = "User ID";
-            // 
-            // LastnameTextBox
-            // 
-            this.LastnameTextBox.Location = new System.Drawing.Point(79, 106);
-            this.LastnameTextBox.Name = "LastnameTextBox";
-            this.LastnameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.LastnameTextBox.TabIndex = 3;
-            // 
-            // InfoNameTextBox
-            // 
-            this.InfoNameTextBox.Location = new System.Drawing.Point(79, 64);
-            this.InfoNameTextBox.Name = "InfoNameTextBox";
-            this.InfoNameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.InfoNameTextBox.TabIndex = 1;
-            // 
-            // InfoIdTextBox
-            // 
-            this.InfoIdTextBox.Location = new System.Drawing.Point(79, 22);
-            this.InfoIdTextBox.Name = "InfoIdTextBox";
-            this.InfoIdTextBox.Size = new System.Drawing.Size(100, 20);
-            this.InfoIdTextBox.TabIndex = 0;
-            // 
             // LogoutLabel
             // 
             this.LogoutLabel.AutoSize = true;
@@ -706,11 +708,32 @@
             this.LogoutLabel.Text = "Log Out";
             this.LogoutLabel.Click += new System.EventHandler(this.LogoutLabel_Click);
             // 
+            // SearchTextBox
+            // 
+            this.SearchTextBox.Location = new System.Drawing.Point(901, 48);
+            this.SearchTextBox.Name = "SearchTextBox";
+            this.SearchTextBox.Size = new System.Drawing.Size(134, 20);
+            this.SearchTextBox.TabIndex = 18;
+            this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
+            this.SearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchTextBox_KeyDown);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold);
+            this.label18.Location = new System.Drawing.Point(839, 49);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(57, 18);
+            this.label18.TabIndex = 19;
+            this.label18.Text = "Search:";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 595);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.RacePanel);
             this.Controls.Add(this.LogoutLabel);
             this.Controls.Add(this.InfoPanel);
@@ -806,5 +829,7 @@
         private System.Windows.Forms.TextBox DurationTextBox;
         private System.Windows.Forms.TextBox RaceUserIdTextBox;
         private System.Windows.Forms.TextBox RaceIdTextBox;
+        private System.Windows.Forms.TextBox SearchTextBox;
+        private System.Windows.Forms.Label label18;
     }
 }
