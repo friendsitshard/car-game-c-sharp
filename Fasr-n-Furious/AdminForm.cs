@@ -110,9 +110,6 @@ namespace Fasr_n_Furious
 
                     if (table == "Users")
                     {
-                        
-                        
-
                         UserPanel.Visible = true;
 
                         if (action == "insert")
@@ -242,21 +239,63 @@ namespace Fasr_n_Furious
                     CommandType = CommandType.StoredProcedure
                 };
 
-                AddParameterIfNotEmpty(cmd, "@username", DbType.String, UsernameTextBox.Text);
-                AddParameterIfNotEmpty(cmd, "@email", DbType.String, EmailTextBox.Text);
-                AddParameterIfNotEmpty(cmd, "@password", DbType.String, PasswordTextBox.Text);
-                AddParameterIfNotEmpty(cmd, "@role_id", DbType.Int32, RoleTextBox.Text);
 
-                try
+                if (string.IsNullOrEmpty(UsernameTextBox.Text))
                 {
-                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Enter username", "Empty field", MessageBoxButtons.OK);
                 }
-                catch (Exception ex)
+                else if (string.IsNullOrEmpty(EmailTextBox.Text))
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Enter email", "Empty field", MessageBoxButtons.OK);
                 }
+                else if (string.IsNullOrEmpty(PasswordTextBox.Text))
+                {
+                    MessageBox.Show("Enter password", "Empty field", MessageBoxButtons.OK);
+                }
+                else if (string.IsNullOrEmpty(RoleTextBox.Text))
+                {
+                    MessageBox.Show("Enter role id", "Empty field", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    try
+                    {
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "username",
+                            DbType = DbType.String,
+                            Value = UsernameTextBox.Text,
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "email",
+                            DbType = DbType.String,
+                            Value = EmailTextBox.Text,
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "password",
+                            DbType = DbType.String,
+                            Value = PasswordTextBox.Text,
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "role_id",
+                            DbType = DbType.Int32,
+                            Value = Convert.ToString(RoleTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
 
-
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                    }
+                }
             }
         }
 
@@ -272,20 +311,82 @@ namespace Fasr_n_Furious
                     CommandType = CommandType.StoredProcedure
                 };
 
-                AddParameterIfNotEmpty(cmd, "@user_id", DbType.Int32, IdTextBox.Text);
-                AddParameterIfNotEmpty(cmd, "@username", DbType.String, UsernameTextBox.Text);
-                AddParameterIfNotEmpty(cmd, "@email", DbType.String, EmailTextBox.Text);
-                AddParameterIfNotEmpty(cmd, "@password", DbType.String, PasswordTextBox.Text);
-                AddParameterIfNotEmpty(cmd, "@verified", DbType.Boolean, VerifiedComboBox.Text);
-                AddParameterIfNotEmpty(cmd, "@role_id", DbType.Int32, RoleTextBox.Text);
-
-                try
+                if (string.IsNullOrEmpty(IdTextBox.Text))
                 {
-                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Enter id", "Empty field", MessageBoxButtons.OK);
                 }
-                catch (Exception ex)
+                else if (string.IsNullOrEmpty(UsernameTextBox.Text))
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Enter username", "Empty field", MessageBoxButtons.OK);
+                }
+                else if (string.IsNullOrEmpty(EmailTextBox.Text))
+                {
+                    MessageBox.Show("Enter email", "Empty field", MessageBoxButtons.OK);
+                }
+                else if (string.IsNullOrEmpty(PasswordTextBox.Text))
+                {
+                    MessageBox.Show("Enter password", "Empty field", MessageBoxButtons.OK);
+                }
+                else if (string.IsNullOrEmpty(VerifiedComboBox.Text))
+                {
+                    MessageBox.Show("Choose verified status", "Empty field", MessageBoxButtons.OK);
+                }
+                else if (string.IsNullOrEmpty(RoleTextBox.Text))
+                {
+                    MessageBox.Show("Enter role id", "Empty field", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    try
+                    {
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "user_id",
+                            DbType = DbType.Int32,
+                            Value = Convert.ToString(IdTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "username",
+                            DbType = DbType.String,
+                            Value = UsernameTextBox.Text,
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "email",
+                            DbType = DbType.String,
+                            Value = EmailTextBox.Text,
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "password",
+                            DbType = DbType.String,
+                            Value = PasswordTextBox.Text,
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "verified",
+                            DbType = DbType.String,
+                            Value = VerifiedComboBox.Text,
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "role_id",
+                            DbType = DbType.Int32,
+                            Value = Convert.ToString(RoleTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                    }
                 }
             }
         }
@@ -302,7 +403,20 @@ namespace Fasr_n_Furious
                     CommandType = CommandType.StoredProcedure
                 };
 
-                AddParameterIfNotEmpty(cmd, "user_id", DbType.Int32, IdTextBox.Text);
+                if (string.IsNullOrEmpty(IdTextBox.Text))
+                {
+                    MessageBox.Show("Enter id", "Empty field", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    cmd.Parameters.Add(new SqlParameter
+                    {
+                        ParameterName = "user_id",
+                        DbType = DbType.Int32,
+                        Value = Convert.ToString(IdTextBox.Text),
+                        Direction = ParameterDirection.Input
+                    });
+                }
 
                 try
                 {
@@ -409,7 +523,7 @@ namespace Fasr_n_Furious
 
                 SqlTransaction tran = ((SqlConnection)con).BeginTransaction();
                 try
-                { 
+                {
                     string insertQuery = "insert into UserInfos([name],[lastname],[age],[sex],[country],[user_id]) values(@name, @lastname, @age, @sex, @country, @user_id)";
                     SqlCommand insertCmd = new SqlCommand(insertQuery, (SqlConnection)con, tran);
 
@@ -482,7 +596,7 @@ namespace Fasr_n_Furious
 
                     tran.Commit();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     tran.Rollback();
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
@@ -590,13 +704,6 @@ namespace Fasr_n_Furious
                 string query = "delete from UserInfos where UserInfos.user_id=@user_id";
 
                 SqlCommand cmd = new SqlCommand(query, (SqlConnection)con);
-                cmd.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@user_id",
-                    DbType = DbType.Int32,
-                    Value = Convert.ToInt32(InfoIdTextBox.Text),
-                    Direction = ParameterDirection.Input
-                });
 
                 if (string.IsNullOrEmpty(InfoIdTextBox.Text))
                 {
@@ -606,6 +713,14 @@ namespace Fasr_n_Furious
                 {
                     try
                     {
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "@user_id",
+                            DbType = DbType.Int32,
+                            Value = Convert.ToInt32(InfoIdTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
+
                         cmd.ExecuteNonQuery();
                     }
                     catch (Exception ex)
@@ -628,13 +743,6 @@ namespace Fasr_n_Furious
 
                 string query = "delete from Races where race_id=@race_id";
                 SqlCommand cmd = new SqlCommand(query, (SqlConnection)con);
-                cmd.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@race_id",
-                    DbType = DbType.Int32,
-                    Value = Convert.ToInt32(RaceIdTextBox.Text),
-                    Direction = ParameterDirection.Input
-                });
 
                 if (string.IsNullOrEmpty(RaceIdTextBox.Text))
                 {
@@ -644,6 +752,14 @@ namespace Fasr_n_Furious
                 {
                     try
                     {
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "@race_id",
+                            DbType = DbType.Int32,
+                            Value = Convert.ToInt32(RaceIdTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
+
                         cmd.ExecuteNonQuery();
                     }
                     catch (Exception ex)
@@ -665,28 +781,6 @@ namespace Fasr_n_Furious
                 string query = "insert into Races(duration, points, user_id) values(@duration, @points, @user_id)";
                 SqlCommand cmd = new SqlCommand(query, (SqlConnection)con);
 
-                cmd.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@duration",
-                    DbType = DbType.Time,
-                    Value = Convert.ToDateTime(DurationTextBox.Text),
-                    Direction = ParameterDirection.Input
-                });
-                cmd.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@points",
-                    DbType = DbType.Int32,
-                    Value = Convert.ToInt32(PointsTextBox.Text),
-                    Direction = ParameterDirection.Input
-                });
-                cmd.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@user_id",
-                    DbType = DbType.Int32,
-                    Value = Convert.ToInt32(RaceUserIdTextBox.Text),
-                    Direction = ParameterDirection.Input
-                });
-
                 if (string.IsNullOrEmpty(DurationTextBox.Text))
                 {
                     MessageBox.Show("Enter duration", "Empty field", MessageBoxButtons.OK);
@@ -703,11 +797,32 @@ namespace Fasr_n_Furious
                 {
                     try
                     {
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "@points",
+                            DbType = DbType.Int32,
+                            Value = Convert.ToInt32(PointsTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "@user_id",
+                            DbType = DbType.Int32,
+                            Value = Convert.ToInt32(RaceUserIdTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "@duration",
+                            DbType = DbType.Time,
+                            Value = Convert.ToDateTime(DurationTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
+
                         cmd.ExecuteNonQuery();
                     }
                     catch (Exception ex)
                     {
-
                         MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
                     }
                 }
@@ -723,35 +838,6 @@ namespace Fasr_n_Furious
 
                 string query = "update Races set duration=@duration, points=@points, user_id=@user_id where race_id=@race_id";
                 SqlCommand cmd = new SqlCommand(query, (SqlConnection)con);
-
-                cmd.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@race_id",
-                    DbType = DbType.Int32,
-                    Value = Convert.ToInt32(RaceIdTextBox.Text),
-                    Direction = ParameterDirection.Input
-                });
-                cmd.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@duration",
-                    DbType = DbType.Time,
-                    Value = Convert.ToDateTime(DurationTextBox.Text),
-                    Direction = ParameterDirection.Input
-                });
-                cmd.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@points",
-                    DbType = DbType.Int32,
-                    Value = Convert.ToInt32(PointsTextBox.Text),
-                    Direction = ParameterDirection.Input
-                });
-                cmd.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@user_id",
-                    DbType = DbType.Int32,
-                    Value = Convert.ToInt32(RaceUserIdTextBox.Text),
-                    Direction = ParameterDirection.Input
-                });
 
                 if (string.IsNullOrEmpty(RaceIdTextBox.Text))
                 {
@@ -773,6 +859,34 @@ namespace Fasr_n_Furious
                 {
                     try
                     {
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "@race_id",
+                            DbType = DbType.Int32,
+                            Value = Convert.ToInt32(RaceIdTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "@duration",
+                            DbType = DbType.Time,
+                            Value = Convert.ToDateTime(DurationTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "@points",
+                            DbType = DbType.Int32,
+                            Value = Convert.ToInt32(PointsTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
+                        cmd.Parameters.Add(new SqlParameter
+                        {
+                            ParameterName = "@user_id",
+                            DbType = DbType.Int32,
+                            Value = Convert.ToInt32(RaceUserIdTextBox.Text),
+                            Direction = ParameterDirection.Input
+                        });
                         cmd.ExecuteNonQuery();
                     }
                     catch (Exception ex)
@@ -783,28 +897,6 @@ namespace Fasr_n_Furious
             }
         }
         #endregion
-
-        void AddParameterIfNotEmpty(SqlCommand cmd, string parameterName, DbType dbType, string value)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                MessageBox.Show($"Enter {parameterName.Substring(1)}", "Empty field", MessageBoxButtons.OK);
-            }
-            else
-            {
-                cmd.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = parameterName,
-                    DbType = dbType,
-                    Value = value,
-                    Direction = ParameterDirection.Input
-                });
-            }
-        }
-        private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
 
         private void LogoutLabel_Click(object sender, EventArgs e)
         {
@@ -834,7 +926,7 @@ namespace Fasr_n_Furious
 
                     dataGridView1.DataSource = dt;
                 }
-                else if (table=="Roles")
+                else if (table == "Roles")
                 {
                     string query = $"SELECT * FROM Roles WHERE name like '%{searchText}%'";
                     SqlCommand cmd = new SqlCommand(query, (SqlConnection)con);
